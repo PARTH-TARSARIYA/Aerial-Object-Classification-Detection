@@ -1,0 +1,7 @@
+streamlit
+ultralytics
+tempfile
+time
+PIL
+os
+cv2
