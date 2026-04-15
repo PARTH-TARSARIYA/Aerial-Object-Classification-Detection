@@ -6,9 +6,13 @@ This project focuses on real-time aerial object detection using YOLOv8, capable 
 The system is designed for safety-critical and environmental applications, where accurate differentiation between natural and artificial flying objects is essential.
 
 ### 🎯 Objectives
+
 Detect and classify Birds and Drones
+
 Enable real-time monitoring
+
 Reduce false positives in aerial detection systems
+
 Provide a deployable Streamlit-based interface
 
 ### 📊 Dataset
@@ -16,8 +20,11 @@ Provide a deployable Streamlit-based interface
 The dataset is sourced from Roboflow:
 
 Project: drones-and-birds
+
 Classes: 2 (Bird, Drone)
+
 Format: YOLOv8 compatible
+
 License: CC BY 4.0
 
 ```
@@ -27,19 +34,29 @@ https://universe.roboflow.com/new-workspace-x00wt/drones-and-birds-0muie/dataset
 
 ### 🧠 Model Architecture
 Model: YOLOv8n (Nano)
+
 Framework: Ultralytics YOLO
+
 Task: Object Detection
+
 Classes: 2
 
 # ⚙️ Training Details
+
 Input size: 480
+
 Epochs: 100
+
 Optimizer: Default (SGD/Adam based on YOLO config)
 
 📈 Sample Results
+
 mAP@50: ~0.80
+
 mAP@50-95: ~0.50
+
 Precision: ~0.80
+
 Recall: ~0.75
 
 ### 🛠️ Project Pipeline
@@ -58,13 +75,20 @@ Deployment (Streamlit App)
 ```
 
 ### 💻 Features
+
 ✅ Image Detection
+
 ✅ Video Detection
+
 ✅ Live Camera Detection
+
 ✅ Real-time bounding box visualization
+
 ✅ External OpenCV window support
+
 ✅ Lightweight model (fast inference)
-🖥️ Deployment
+
+### 🖥️ Deployment
 
 The application is built using Streamlit.
 
@@ -98,26 +122,37 @@ Track bird populations using aerial imagery without misclassification.
 ### ⚠️ Challenges & Limitations :
 
 Class imbalance may affect recall (bird vs drone)
+
 Small object detection remains challenging
+
 Performance depends heavily on dataset quality
+
 Real-time processing speed varies with hardware
 
 ### 🔮 Future Improvements :
+
 Improve dataset diversity and balance
+
 Use larger models (YOLOv8m/l) for higher accuracy
+
 Add tracking (e.g., DeepSORT)
+
 Deploy on edge devices (Jetson, Raspberry Pi)
+
 Integrate alert/notification system
 
 ### 📜 License
 
 Dataset: CC BY 4.0 (via Roboflow)
+
 Project: Open-source for educational/research purposes
 
 ### 🙌 Acknowledgements :
 
 Roboflow for dataset hosting
+
 Ultralytics for YOLOv8
+
 OpenCV & Streamlit communities
 
 ### 🎯 Final Note
