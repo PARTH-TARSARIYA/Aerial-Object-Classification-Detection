@@ -17,7 +17,7 @@ def load_model():
 
 model = load_model()
 
-# ---------------- IMAGE ----------------
+# Image prediction
 def predict_image(file):
     tfile = tempfile.NamedTemporaryFile(delete=False, suffix='.jpg')
 
@@ -28,7 +28,6 @@ def predict_image(file):
         results = model.predict(source=tfile.name, conf=0.5)
         output = results[0].plot()
 
-        # ✅ Show in Streamlit instead of cv2 window
         st.image(output, channels="BGR", use_container_width=True)
 
         st.success("Image processed!")
@@ -39,7 +38,7 @@ def predict_image(file):
             os.remove(tfile.name)
 
 
-# ---------------- VIDEO ----------------
+# Video
 def predict_video(file):
     tfile = tempfile.NamedTemporaryFile(delete=False, suffix='.mp4')
 
@@ -59,7 +58,6 @@ def predict_video(file):
             results = model(frame, conf=0.5)
             output = results[0].plot()
 
-            # ✅ Streamlit display
             frame_placeholder.image(output, channels="BGR", use_container_width=True)
 
         cap.release()
@@ -70,23 +68,6 @@ def predict_video(file):
         if os.path.exists(tfile.name):
             os.remove(tfile.name)
 
-
-# ---------------- CAMERA ----------------
-def predict_camera():
-    img_file_buffer = st.camera_input("Take a picture")
-
-    if img_file_buffer is not None:
-        image = Image.open(img_file_buffer)
-        frame = cv2.cvtColor(np.array(image), cv2.COLOR_RGB2BGR)
-
-        results = model(frame, conf=0.5)
-        output = results[0].plot()
-
-        st.image(output, channels="BGR", use_container_width=True)
-        st.success("Camera prediction done!")
-
-
-# ---------------- UI ----------------
 choice = st.radio('Choose input type to detect drone or bird!', ['image', 'video', 'live camera'])
 
 if choice == 'image':
@@ -98,6 +79,3 @@ elif choice == 'video':
     video = st.file_uploader('Upload a video', type=['mp4', 'mov', 'avi'])
     if video is not None:
         predict_video(video)
-
-else:
-    predict_camera()
