@@ -68,7 +68,7 @@ def predict_video(file):
         if os.path.exists(tfile.name):
             os.remove(tfile.name)
 
-choice = st.radio('Choose input type to detect drone or bird!', ['image', 'video', 'live camera'])
+choice = st.radio('Choose input type to detect drone or bird!', ['image', 'video'])
 
 if choice == 'image':
     image = st.file_uploader('Upload an image', type=['jpg', 'jpeg', 'png'])
