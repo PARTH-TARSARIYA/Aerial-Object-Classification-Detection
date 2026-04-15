@@ -78,8 +78,7 @@ def predict_video(file):
             key = cv2.waitKey(25) & 0xFF
             if key == 27:
                 break
-
-            # 🔥 Detect if window manually closed
+                
             if cv2.getWindowProperty("Detection", cv2.WND_PROP_VISIBLE) < 1:
                 break
 
@@ -132,8 +131,7 @@ else:
             key = cv2.waitKey(1) & 0xFF
             if key == 27:
                 break
-
-            # 🔥 Detect window close
+                
             if cv2.getWindowProperty("Detection", cv2.WND_PROP_VISIBLE) < 1:
                 break
 
