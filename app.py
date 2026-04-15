@@ -68,14 +68,45 @@ def predict_video(file):
         if os.path.exists(tfile.name):
             os.remove(tfile.name)
 
-choice = st.radio('Choose input type to detect drone or bird!', ['image', 'video'])
 
-if choice == 'image':
-    image = st.file_uploader('Upload an image', type=['jpg', 'jpeg', 'png'])
+choise = st.radio('Choose input type to detect drone or bird!', ['image', 'video', 'live camera'])
+
+if choise == 'image':
+    image = st.file_uploader('Upload an image', type = ['jpg', 'jpeg', 'png'])
     if image is not None:
         predict_image(image)
 
-elif choice == 'video':
-    video = st.file_uploader('Upload a video', type=['mp4', 'mov', 'avi'])
+
+elif choise == 'video':
+    video = st.file_uploader('Upload an video', type = ['mp4', 'mov', 'avi'])
     if video is not None:
         predict_video(video)
+
+else:
+    start = st.button("Start Camera")
+
+    if start:
+        cap = cv2.VideoCapture(0)
+
+        cv2.namedWindow("Detection", cv2.WINDOW_NORMAL)
+        cv2.resizeWindow("Detection", 1200, 800)
+
+        while True:
+            ret, frame = cap.read()
+            if not ret:
+                break
+
+            results = model(frame, conf=0.5)
+            output = results[0].plot()
+
+            cv2.imshow("Detection", output)
+
+            key = cv2.waitKey(1) & 0xFF
+            if key == 27:
+                break
+
+            if cv2.getWindowProperty("Detection", cv2.WND_PROP_VISIBLE) < 1:
+                break
+
+        cap.release()
+        cv2.destroyAllWindows()
