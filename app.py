@@ -83,30 +83,31 @@ elif choise == 'video':
         predict_video(video)
 
 else:
-    start = st.button("Start Camera")
+    st.warning("Live camera is not supported on Streamlit Cloud. Use image/video upload.")
+#     start = st.button("Start Camera")
 
-    if start:
-        cap = cv2.VideoCapture(0)
+#     if start:
+#         cap = cv2.VideoCapture(0)
 
-        cv2.namedWindow("Detection", cv2.WINDOW_NORMAL)
-        cv2.resizeWindow("Detection", 1200, 800)
+#         cv2.namedWindow("Detection", cv2.WINDOW_NORMAL)
+#         cv2.resizeWindow("Detection", 1200, 800)
 
-        while True:
-            ret, frame = cap.read()
-            if not ret:
-                break
+#         while True:
+#             ret, frame = cap.read()
+#             if not ret:
+#                 break
 
-            results = model(frame, conf=0.5)
-            output = results[0].plot()
+#             results = model(frame, conf=0.5)
+#             output = results[0].plot()
 
-            cv2.imshow("Detection", output)
+#             cv2.imshow("Detection", output)
 
-            key = cv2.waitKey(1) & 0xFF
-            if key == 27:
-                break
+#             key = cv2.waitKey(1) & 0xFF
+#             if key == 27:
+#                 break
 
-            if cv2.getWindowProperty("Detection", cv2.WND_PROP_VISIBLE) < 1:
-                break
+#             if cv2.getWindowProperty("Detection", cv2.WND_PROP_VISIBLE) < 1:
+#                 break
 
-        cap.release()
-        cv2.destroyAllWindows()
+#         cap.release()
+#         cv2.destroyAllWindows()
