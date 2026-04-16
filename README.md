@@ -43,6 +43,8 @@ Classes: 2
 
 # ⚙️ Training Details
 
+model training : https://www.kaggle.com/code/partar/aerial-object-classification-and-detection?scriptVersionId=312077539
+
 Input size: 480
 
 Epochs: 100
